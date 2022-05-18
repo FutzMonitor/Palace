@@ -36,8 +36,20 @@ public class emptyDeck {
 	 * @param fromThisDeck - add a card to the deck
 	 * @param thisCard - add this card object to the deck
 	 */
-	public void addCard(emptyDeck fromThisDeck, cards thisCard) {
-		fromThisDeck.deckOfCards.add(thisCard);
+	public void addCard(emptyDeck toThisDeck, cards thisCard) {
+		toThisDeck.deckOfCards.add(thisCard);
+	}
+	
+	/**
+	 * Moves a card from one deck to another
+	 * @param fromThisDeck - removes a card from this specified deck
+	 * @param toThisDeck - adds a card fromThisDeck to this specified deck
+	 */
+	public void moveCard(emptyDeck fromThisDeck, emptyDeck toThisDeck) {
+		cards targetCard = fromThisDeck.getCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
+		fromThisDeck.removeCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
+		toThisDeck.addCard(toThisDeck, targetCard);
+		
 	}
 
 	/**
@@ -69,6 +81,20 @@ public class emptyDeck {
 	public static void main(String[] args) {
 		emptyDeck testEmptyDeck = new emptyDeck();
 
+		// First test to make sure the deck is empty
+		if (testEmptyDeck.deckSize(testEmptyDeck) == 0) {
+			System.out.println("This deck is empty");
+		}
+		else {
+			cards fetchedCard = testEmptyDeck.getCard(testEmptyDeck, 0);
+			System.out.println("0: " + fetchedCard.toString(fetchedCard));
+		}
+		
+		deck testDeck = new deck();
+		
+		testEmptyDeck.moveCard(testDeck, testEmptyDeck);
+		
+		// Second test to make sure the previously empty deck now has one card
 		if (testEmptyDeck.deckSize(testEmptyDeck) == 0) {
 			System.out.println("This deck is empty");
 		}
