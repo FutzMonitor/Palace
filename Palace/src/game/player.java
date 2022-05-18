@@ -8,7 +8,8 @@ package game;
  */
 public class player {
 
-	public player(deck hand, deck tableHand) {
-
+	public player() {
+		emptyDeck playerHand = new emptyDeck();
+		emptyDeck tableHand = new emptyDeck();
 	}
 }
