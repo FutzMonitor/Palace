@@ -7,9 +7,9 @@ package game;
  * @last_modified 05/18/2022
  */
 public class player {
-	
+
 	private String pName;
-	
+
 	/**
 	 * Constructs two empty decks for the player.
 	 */

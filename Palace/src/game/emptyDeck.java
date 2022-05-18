@@ -39,7 +39,7 @@ public class emptyDeck {
 	public void addCard(emptyDeck toThisDeck, cards thisCard) {
 		toThisDeck.deckOfCards.add(thisCard);
 	}
-	
+
 	/**
 	 * Moves a card from one deck to another
 	 * @param fromThisDeck - removes a card from this specified deck
@@ -49,7 +49,7 @@ public class emptyDeck {
 		cards targetCard = fromThisDeck.getCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
 		fromThisDeck.removeCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
 		toThisDeck.addCard(toThisDeck, targetCard);
-		
+
 	}
 
 	/**
@@ -89,11 +89,11 @@ public class emptyDeck {
 			cards fetchedCard = testEmptyDeck.getCard(testEmptyDeck, 0);
 			System.out.println("0: " + fetchedCard.toString(fetchedCard));
 		}
-		
+
 		deck testDeck = new deck();
-		
+
 		testEmptyDeck.moveCard(testDeck, testEmptyDeck);
-		
+
 		// Second test to make sure the previously empty deck now has one card
 		if (testEmptyDeck.deckSize(testEmptyDeck) == 0) {
 			System.out.println("This deck is empty");

@@ -22,15 +22,15 @@ public enum Ranks {
 	 * Assigns each rank their numeric values.
 	 * @param numVal - numeric value of that rank.
 	 */
-    Ranks(int numVal) {
-        this.rankVal = numVal;
-    }
+	Ranks(int numVal) {
+		this.rankVal = numVal;
+	}
 
-    /**
-     * Returns the numeric value of a card's rank.
-     * @return - return numeric value of card's rank.
-     */
-    public int getRankVal() {
-        return rankVal;
-    } 
+	/**
+	 * Returns the numeric value of a card's rank.
+	 * @return - return numeric value of card's rank.
+	 */
+	public int getRankVal() {
+		return rankVal;
+	} 
 }

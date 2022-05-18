@@ -47,6 +47,8 @@ public class deck extends emptyDeck{
 	}
 
 	public static void main(String[] args) {
+
+		// First test to make sure that a full deck of 52 correct cards are populating the ArrayList that is the deck.
 		deck testDeck = new deck();
 		System.out.println("The size of this deck of cards is: " + testDeck.deckSize(testDeck));
 		for(int i = 0; i < testDeck.deckSize(testDeck); i++) {
@@ -54,6 +56,7 @@ public class deck extends emptyDeck{
 			System.out.println(i + ": " + fetchedCard.toString(fetchedCard));
 		}
 
+		// Second test makes sure that the cards are shuffled.
 		System.out.println("\nShuffled cards: \n");
 		testDeck.shuffleDeck(testDeck);
 
