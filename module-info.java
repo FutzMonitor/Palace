@@ -1,2 +1,0 @@
-module l_palace {
-}
