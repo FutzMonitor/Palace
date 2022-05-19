@@ -3,7 +3,6 @@
 </p>
 
 <p align="center">
-# Welcome to my Personal Project    
-This project is a personal project to digitize the card game Palace. 
+** Welcome to my personal project** 
 </p>
 
