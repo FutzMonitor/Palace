@@ -46,6 +46,9 @@ public class emptyDeck {
 	 * @param toThisDeck - adds a card fromThisDeck to this specified deck
 	 */
 	public void moveCard(emptyDeck fromThisDeck, emptyDeck toThisDeck) {
+		// Debugging code: verifies indices are correct.
+//		System.out.println("The size of fromThisDeck cards is: " + fromThisDeck.deckSize(fromThisDeck) +
+//				"\nThe size of toThisDeck: " + toThisDeck.deckSize(toThisDeck));
 		cards targetCard = fromThisDeck.getCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
 		fromThisDeck.removeCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
 		toThisDeck.addCard(toThisDeck, targetCard);
