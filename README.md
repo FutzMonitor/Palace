@@ -3,6 +3,6 @@
 </p>
 
 <p align="center">
-** Welcome to my personal project** 
+**Welcome to my personal project** 
 </p>
 
