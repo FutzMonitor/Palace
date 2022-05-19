@@ -9,13 +9,68 @@ package game;
 public class player {
 
 	private String pName;
+	private int turnId;
+	private emptyDeck hand;
+	private emptyDeck tableHand;
+
 
 	/**
 	 * Constructs two empty decks for the player.
 	 */
-	public player(String initPName) {
+	public player(String initPName, int initTurnid) {
 		pName = initPName;
-		emptyDeck playerHand = new emptyDeck();
-		emptyDeck tableHand = new emptyDeck();
+		turnId = initTurnid;
+		hand = new emptyDeck();
+		tableHand = new emptyDeck();
+	}
+
+	/**
+	 * Set a new name for the player.
+	 * @param newName - the new name to be set.
+	 */
+	public void setName(String newName) {
+		pName = newName;
+	}
+
+	/**
+	 * Set a new turn id for the player.
+	 * @param newId - the new id for the player's turn id.
+	 */
+	public void setNewTurnId(int newId) {
+		turnId = newId;
+	}
+
+	/**
+	 * Return the name of the player.
+	 * @return - the name of the player.
+	 */
+	public String getName() {
+		return pName;
+	}
+
+	/**
+	 * Return the turn id of the player.
+	 * @return - the turn id of the player
+	 */
+	public int getTurnid() {
+		return turnId;
+	}
+
+	/**
+	 * Return the player's hand.
+	 * @param thisPlayer - specifies the player we want to look at.
+	 * @return - return a specified player's hand.
+	 */
+	public emptyDeck getPlayerHand(player thisPlayer) {
+		return hand;
+	}
+
+	/**
+	 * Return the player's table hand.
+	 * @param thisPlayer - specifies the player we want to look at.
+	 * @return - return a specified player's table hand.
+	 */
+	public emptyDeck getPlayerTableHand(player thisPlayer) {
+		return tableHand;
 	}
 }
