@@ -73,7 +73,7 @@ public class player {
 	public emptyDeck getPlayerTableHand(player thisPlayer) {
 		return tableHand;
 	}
-	
+
 	/**
 	 * Return the size of the player's deck
 	 * @param thisDeck - specified deck, grab its size.

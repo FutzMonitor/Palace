@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Class that creates a deck of cards for the game Palace
+ * This class is a sub-class of emptyDeck.java
  * @author Christian Gonzalez
  * @date 05/18/2022
  * @last_modified 05/18/2022

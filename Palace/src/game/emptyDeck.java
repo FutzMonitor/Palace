@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class that creates an empty deck of cards for the game Palace.
+ * @author Christian Gonzalez
+ * @date 05/18/2022
+ * @last_modified 05/19/2022
+ */
 public class emptyDeck {
 
 	protected List<cards> deckOfCards;
@@ -47,8 +53,8 @@ public class emptyDeck {
 	 */
 	public void moveCard(emptyDeck fromThisDeck, emptyDeck toThisDeck) {
 		// Debugging code: verifies indices are correct.
-//		System.out.println("The size of fromThisDeck cards is: " + fromThisDeck.deckSize(fromThisDeck) +
-//				"\nThe size of toThisDeck: " + toThisDeck.deckSize(toThisDeck));
+		//		System.out.println("The size of fromThisDeck cards is: " + fromThisDeck.deckSize(fromThisDeck) +
+		//				"\nThe size of toThisDeck: " + toThisDeck.deckSize(toThisDeck));
 		cards targetCard = fromThisDeck.getCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
 		fromThisDeck.removeCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
 		toThisDeck.addCard(toThisDeck, targetCard);
