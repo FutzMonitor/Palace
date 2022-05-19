@@ -3,6 +3,6 @@
 </p>
 
 <p align="center">
-  **Welcome to my personal project repo**
+  <strong>Welcome to my personal project</strong>
 </p>
 
