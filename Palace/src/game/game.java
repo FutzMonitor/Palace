@@ -11,16 +11,20 @@ import java.util.Scanner;
 public class game {
 
 	// Keeps track of which player makes their turn.
-	private int turnCounter;
+	private static int turnCounter;
 
-	public void playerTurn() {
+	public static void generateBeginning() {
+		turnCounter = (Math.random() <= 0.5) ? 0 : 1;
+	}
 
+	public static int getturnCounter() {
+		return turnCounter;
 	}
 
 	public static void startGame() {
 		// Create two players. For now we'll have myself and a CPU. 
-		player p_one = new player("Chris", 0);
-		player p_two = new player("CPU", 1);
+		player p_one = new player("Chris", 1);
+		player p_two = new player("CPU", 2);
 
 		// Create the main pile which is where the game takes place.
 		// Create the main deck where the cards are dealt and drawn from.
@@ -48,7 +52,10 @@ public class game {
 		String rulesResp = rulesPrompt.nextLine();
 		gameFunc.printRules(rulesResp);
 
-
+		// Decides who goes first
+		// Make sure this is randomized
+		generateBeginning();
+		System.out.println(getturnCounter());
 
 
 

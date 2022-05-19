@@ -100,10 +100,10 @@ public class gameFunc {
 		}
 		//Invalid response
 		System.out.println("Mmm, not a valid response, but we will go ahead and start anyway." );
-		
+
 		return false; 
 	}
-
+	
 
 
 
