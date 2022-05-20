@@ -82,4 +82,12 @@ public class player {
 	public int getPSize(emptyDeck thisDeck) {
 		return thisDeck.deckSize(thisDeck);
 	}
+	
+	/**
+	 * Show the player's hand by calling the emptyDeck's showHand() function.
+	 * @param fromThisDeck - show cards of this specified deck.
+	 */
+	public void showPlayerHand(emptyDeck fromThisDeck) {
+		fromThisDeck.showHand(fromThisDeck);
+	}
 }

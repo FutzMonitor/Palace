@@ -47,7 +47,7 @@ public class emptyDeck {
 	}
 
 	/**
-	 * Moves a card from one deck to another
+	 * Moves a card from one deck to another.
 	 * @param fromThisDeck - removes a card from this specified deck
 	 * @param toThisDeck - adds a card fromThisDeck to this specified deck
 	 */
@@ -57,6 +57,22 @@ public class emptyDeck {
 		//				"\nThe size of toThisDeck: " + toThisDeck.deckSize(toThisDeck));
 		cards targetCard = fromThisDeck.getCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
 		fromThisDeck.removeCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
+		toThisDeck.addCard(toThisDeck, targetCard);
+
+	}
+	
+	/**
+	 * Moves a specified card from one deck to another
+	 * @param fromThisDeck - removes a card from this specified deck
+	 * @param toThisDeck - adds a card fromThisDeck to this specified deck
+	 * @param location - of the card to be moved from one deck to another
+	 */
+	public void moveCardWithLocation(emptyDeck fromThisDeck, emptyDeck toThisDeck, int location) {
+		// Debugging code: verifies indices are correct.
+		//		System.out.println("The size of fromThisDeck cards is: " + fromThisDeck.deckSize(fromThisDeck) +
+		//				"\nThe size of toThisDeck: " + toThisDeck.deckSize(toThisDeck));
+		cards targetCard = fromThisDeck.getCard(fromThisDeck, location);
+		fromThisDeck.removeCard(fromThisDeck, location);
 		toThisDeck.addCard(toThisDeck, targetCard);
 
 	}
@@ -85,6 +101,17 @@ public class emptyDeck {
 	 */
 	public List<cards> getDeckArrayList(emptyDeck fromThisDeck){
 		return deckOfCards;
+	}
+	
+	/**
+	 * Prints the cards inside the deck.
+	 * @param fromThisDeck - specified deck from which to read from.
+	 */
+	public void showHand(emptyDeck fromThisDeck) {
+		for(int i = 0; i < fromThisDeck.deckSize(fromThisDeck); i++) {
+			cards fetchedCard = fromThisDeck.getCard(fromThisDeck, i);
+			System.out.println(i + ": " + fetchedCard.toString(fetchedCard));
+		}
 	}
 
 	public static void main(String[] args) {

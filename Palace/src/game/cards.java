@@ -98,11 +98,11 @@ public class cards {
 				+ infoCard.getSuite() + ", Special: " + infoCard.getSpecial() + ", Visibility: " + infoCard.getVisibility();
 		return cardInfo;
 	}
-
-	public static void main(String[] args) {
-		cards testCard = new cards(Ranks.Two, Suites.Spades, Specials.Bomb);
-		System.out.println("Card's rank: " + testCard.getRank() + " , value of " + Ranks.Two.getRankVal()
-		+ "\nCard's suite: " + testCard.getSuite() + 
-		"\nCard's Special: " + testCard.getSpecial());
-	}
+		// For debugging purposes
+	//	public static void main(String[] args) {
+	//		cards testCard = new cards(Ranks.Two, Suites.Spades, Specials.Bomb);
+	//		System.out.println("Card's rank: " + testCard.getRank() + " , value of " + Ranks.Two.getRankVal()
+	//		+ "\nCard's suite: " + testCard.getSuite() + 
+	//		"\nCard's Special: " + testCard.getSpecial());
+	//	}
 } 

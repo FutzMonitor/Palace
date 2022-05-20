@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Scanner;
+
 /**
  * Class that houses functions for the game Palace
  * Keeps the game.java class relatively clean and organized.
@@ -8,6 +10,8 @@ package game;
  * @last_modified 05/19/2022
  */
 public class gameFunc {
+
+	private final static int tableCardLimit = 4;
 
 
 	/**
@@ -22,13 +26,18 @@ public class gameFunc {
 		// Mark three of those cards as "invisible".
 
 		for(int i = 0; i < 3; i++) {
+			fromThisDeck.getCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1).setVisibility(false);
 			one.getPlayerTableHand(one).moveCard(fromThisDeck, one.getPlayerTableHand(one));
-			one.getPlayerTableHand(one).getCard(fromThisDeck, i).setVisibility(false);
+			//			System.out.println("Cards inside the table hand: \n");
+			//			one.showPlayerHand(one.getPlayerTableHand(one));
+			//			System.out.println("\n");
+			//one.getPlayerTableHand(one).getCard(fromThisDeck, i).setVisibility(false);
 		}
 
 		for(int j = 0; j < 3; j++) {
+			fromThisDeck.getCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1).setVisibility(false);
 			two.getPlayerTableHand(two).moveCard(fromThisDeck, two.getPlayerTableHand(two));
-			two.getPlayerTableHand(two).getCard(fromThisDeck, j).setVisibility(false);
+			//two.getPlayerTableHand(two).getCard(fromThisDeck, j).setVisibility(false);
 		}
 
 		// Give each player their seven cards for their hand.
@@ -40,39 +49,13 @@ public class gameFunc {
 				two.getPlayerTableHand(two).moveCard(fromThisDeck, two.getPlayerHand(two));
 			}
 		}
-
-		//		one.getPlayerTableHand(one).moveCard(fromThisDeck, one.getPlayerTableHand(one));
-		//		one.getPlayerTableHand(one).moveCard(fromThisDeck, one.getPlayerTableHand(one));
-		//		one.getPlayerTableHand(one).moveCard(fromThisDeck, one.getPlayerTableHand(one));
-		//		one.getPlayerTableHand(one).getCard(fromThisDeck, 0).setVisibility(false);
-		//		one.getPlayerTableHand(one).getCard(fromThisDeck, 1).setVisibility(false);
-		//		one.getPlayerTableHand(one).getCard(fromThisDeck, 2).setVisibility(false);
-
-
-		//		two.getPlayerTableHand(two).moveCard(fromThisDeck, two.getPlayerTableHand(two));
-		//		two.getPlayerTableHand(two).moveCard(fromThisDeck, two.getPlayerTableHand(two));
-		//		two.getPlayerTableHand(two).moveCard(fromThisDeck, two.getPlayerTableHand(two));
-		//		two.getPlayerTableHand(two).getCard(fromThisDeck, 0).setVisibility(false);
-		//		two.getPlayerTableHand(two).getCard(fromThisDeck, 1).setVisibility(false);
-		//		two.getPlayerTableHand(two).getCard(fromThisDeck, 2).setVisibility(false);
-
-
-		//Add 7 cards to both players hands
-		//		p_one.getPlayerTableHand(p_one).moveCard(mainDeck, p_one.getPlayerHand(p_one));
-		//		p_one.getPlayerTableHand(p_one).moveCard(mainDeck, p_one.getPlayerHand(p_one));
-		//		p_one.getPlayerTableHand(p_one).moveCard(mainDeck, p_one.getPlayerHand(p_one));
-		//		p_one.getPlayerTableHand(p_one).moveCard(mainDeck, p_one.getPlayerHand(p_one));
-		//		p_one.getPlayerTableHand(p_one).moveCard(mainDeck, p_one.getPlayerHand(p_one));
-		//		p_one.getPlayerTableHand(p_one).moveCard(mainDeck, p_one.getPlayerHand(p_one));
-		//		p_one.getPlayerTableHand(p_one).moveCard(mainDeck, p_one.getPlayerHand(p_one));
-		//
-		//		p_two.getPlayerTableHand(p_two).moveCard(mainDeck, p_two.getPlayerHand(p_two));
-		//		p_two.getPlayerTableHand(p_two).moveCard(mainDeck, p_two.getPlayerHand(p_two));
-		//		p_two.getPlayerTableHand(p_two).moveCard(mainDeck, p_two.getPlayerHand(p_two));
-		//		p_two.getPlayerTableHand(p_two).moveCard(mainDeck, p_two.getPlayerHand(p_two));
-		//		p_two.getPlayerTableHand(p_two).moveCard(mainDeck, p_two.getPlayerHand(p_two));
-		//		p_two.getPlayerTableHand(p_two).moveCard(mainDeck, p_two.getPlayerHand(p_two));
-		//		p_two.getPlayerTableHand(p_two).moveCard(mainDeck, p_two.getPlayerHand(p_two));
+		// For debugging purposes.
+		// Cards have been dealt. Make sure the size of tableHand, Hand, and Main Deck are correct. 
+		//		System.out.println("The size of this main deck of cards is: " + fromThisDeck.deckSize(fromThisDeck)
+		//		+ "\n" + one.getName() + "'s hand has: " + one.getPSize(one.getPlayerHand(one))
+		//		+ " || and their table hand has: " + one.getPSize(one.getPlayerTableHand(one))
+		//		+ "\n" + two.getName() + "'s hand has: " + two.getPSize(two.getPlayerHand(two)) 
+		//		+ " || and their table hand has : " + two.getPSize(two.getPlayerTableHand(two)));
 	}
 
 	public static boolean printRules(String resp) {
@@ -103,14 +86,30 @@ public class gameFunc {
 
 		return false; 
 	}
-	
 
+	/**
+	 * Move a specified card from the player's hand to his table cards.
+	 * @param thisPlayer - specifies the player.
+	 * @param cardLocation - specifies which card is being moved.
+	 */
+	public static void placeDownCards(player thisPlayer, int cardLocation, int limit){
+		thisPlayer.getPlayerHand(thisPlayer).moveCardWithLocation(thisPlayer.getPlayerHand(thisPlayer), thisPlayer.getPlayerTableHand(thisPlayer), cardLocation);
 
+		System.out.println("These are the your cards on the table " + thisPlayer.getName());
+		thisPlayer.showPlayerHand(thisPlayer.getPlayerTableHand(thisPlayer));
+		System.out.println("\nThese are the cards in your hand " + thisPlayer.getName());
+		thisPlayer.showPlayerHand(thisPlayer.getPlayerHand(thisPlayer));
 
+		if(limit < tableCardLimit) {
+			System.out.println("\nPlease choose card number " +  limit + " to place down: \n");
+			Scanner putDownResp = new Scanner(System.in); 
+			System.out.println("Please enter a number [0-6]: ");
+			int faceupCard = putDownResp.nextInt();
+			gameFunc.placeDownCards(thisPlayer, faceupCard, limit + 1);
+		}
+		
 
-
-
-
+	}
 
 
 }

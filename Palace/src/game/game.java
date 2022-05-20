@@ -17,14 +17,14 @@ public class game {
 		turnCounter = (Math.random() <= 0.5) ? 0 : 1;
 	}
 
-	public static int getturnCounter() {
+	public static int getTurnCounter() {
 		return turnCounter;
 	}
 
 	public static void startGame() {
 		// Create two players. For now we'll have myself and a CPU. 
-		player p_one = new player("Chris", 1);
-		player p_two = new player("CPU", 2);
+		player p_one = new player("Chris", 0);
+		player p_two = new player("CPU", 1);
 
 		// Create the main pile which is where the game takes place.
 		// Create the main deck where the cards are dealt and drawn from.
@@ -35,16 +35,14 @@ public class game {
 		mainDeck.shuffleDeck(mainDeck);
 
 		// Make sure the main deck was populated with 52 cards. 
-		System.out.println("The size of this main deck of cards is: " + mainDeck.deckSize(mainDeck));
+		//System.out.println("The size of this main deck of cards is: " + mainDeck.deckSize(mainDeck));
 
 		gameFunc.dealCards(p_one, p_two, mainDeck);
 
-		// Cards have been dealt. Make sure the size of tableHand, Hand, and Main Deck are correct. 
-		System.out.println("The size of this main deck of cards is: " + mainDeck.deckSize(mainDeck)
-		+ "\n" + p_one.getName() + "'s hand has: " + p_one.getPSize(p_one.getPlayerHand(p_one))
-		+ " || and their table hand has: " + p_one.getPSize(p_one.getPlayerTableHand(p_one))
-		+ "\n" + p_two.getName() + "'s hand has: " + p_two.getPSize(p_two.getPlayerHand(p_two)) 
-		+ " || and their table hand has : " + p_two.getPSize(p_two.getPlayerTableHand(p_two)));
+		//		System.out.println("Here's Chris's table hand: \n");
+		//		p_one.showPlayerHand(p_one.getPlayerTableHand(p_one));
+		//		System.out.println("\nHere's Chris's hand: \n");
+		//		p_one.showPlayerHand(p_one.getPlayerHand(p_one));
 
 		System.out.println("Welcome to Palace!\nWould you like an explanation on the rules of the game?");
 		Scanner rulesPrompt = new Scanner(System.in); 
@@ -55,9 +53,22 @@ public class game {
 		// Decides who goes first
 		// Make sure this is randomized
 		generateBeginning();
-		System.out.println(getturnCounter());
+		//System.out.println(getturnCounter());
 
-
+		// Now, let's ask the user which cards they want to put on the table faceup.
+		if(p_one.getTurnid() == getTurnCounter()) {
+			System.out.println("\nPlease look at your hand " + p_one.getName());
+			p_one.showPlayerHand(p_one.getPlayerHand(p_one));
+			System.out.println("\nPlease choose card number 1 to place down: \n");
+			Scanner putDownResp = new Scanner(System.in); 
+			System.out.println("Please enter a number [0-6]: ");
+			int faceupCard = putDownResp.nextInt();
+			gameFunc.placeDownCards(p_one, faceupCard, 2);
+		}
+		else {
+			System.out.println("\nPlease look at your hand " + p_two.getName());
+			p_two.showPlayerHand(p_two.getPlayerHand(p_two));
+		}
 
 
 	}

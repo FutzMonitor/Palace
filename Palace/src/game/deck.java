@@ -52,19 +52,13 @@ public class deck extends emptyDeck{
 		// First test to make sure that a full deck of 52 correct cards are populating the ArrayList that is the deck.
 		deck testDeck = new deck();
 		System.out.println("The size of this deck of cards is: " + testDeck.deckSize(testDeck));
-		for(int i = 0; i < testDeck.deckSize(testDeck); i++) {
-			cards fetchedCard = testDeck.getCard(testDeck, i);
-			System.out.println(i + ": " + fetchedCard.toString(fetchedCard));
-		}
+		testDeck.showHand(testDeck);
 
 		// Second test makes sure that the cards are shuffled.
 		System.out.println("\nShuffled cards: \n");
 		testDeck.shuffleDeck(testDeck);
 
-		for(int j = 0; j < testDeck.deckSize(testDeck); j++) {
-			cards fetchedCard = testDeck.getCard(testDeck, j);
-			System.out.println(j + ": " + fetchedCard.toString(fetchedCard));
-		}
+		testDeck.showHand(testDeck);
 
 	}
 }
