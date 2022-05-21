@@ -6,13 +6,16 @@ import java.util.Scanner;
  * The main game component of Palace
  * @author Christian Gonzalez
  * @date 05/18/2022
- * @last_modified 05/19/2022
+ * @last_modified 05/2020/2022
  */
 public class game {
 
 	// Keeps track of which player makes their turn.
 	private static int turnCounter;
 
+	/*
+	 * Generate a random turnCounter to dictate who goes first.
+	 */
 	public static void generateBeginning() {
 		turnCounter = (Math.random() <= 0.5) ? 0 : 1;
 	}
