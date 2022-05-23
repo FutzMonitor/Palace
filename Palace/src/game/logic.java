@@ -9,16 +9,18 @@ package game;
 public class logic {
 
 	// Indices? 
-	public boolean numLogic(emptyDeck thisCard, emptyDeck needsToBeat) {
-		int cardOneVal = thisCard.getCard(thisCard, 0).getRank().getRankVal();
+	public boolean numLogic(emptyDeck thisCard, emptyDeck needsToBeat, int index) {
+		int cardOneVal = thisCard.getCard(thisCard, index).getRank().getRankVal();
 		int cardTwoVal = needsToBeat.getCard(needsToBeat, 0).getRank().getRankVal();
-		
+
 		if(cardOneVal >= cardTwoVal) {
 			return true;
 		}
 		else if(cardOneVal == 2 || cardOneVal == 4 || cardOneVal == 7 || cardOneVal == 10) {
-			//do stuff
+			return true;
 		}
-		return false;
+		else {
+			return false;
+		}
 	}
 }

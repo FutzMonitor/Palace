@@ -27,7 +27,7 @@ public class game {
 	public static void startGame() {
 		// Create two players. For now we'll have myself and a CPU. 
 		player p_one = new player("Chris", 0);
-		player p_two = new player("CPU", 1);
+		cpu p_two = new cpu("CPU", 1);
 
 		// Create the main pile which is where the game takes place.
 		// Create the main deck where the cards are dealt and drawn from.
@@ -52,26 +52,23 @@ public class game {
 		System.out.println("Please enter [y/n]: ");
 		String rulesResp = rulesPrompt.nextLine();
 		gameFunc.printRules(rulesResp);
+		//rulesPrompt.close();
 
-		// Decides who goes first
-		// Make sure this is randomized
-		generateBeginning();
-		//System.out.println(getturnCounter());
+		// Allow both players to put their cards facedown. 
+		p_two.placeTableCards(p_two, p_two.getPlayerHand(p_two));
 
 		// Now, let's ask the user which cards they want to put on the table faceup.
-		if(p_one.getTurnid() == getTurnCounter()) {
-			System.out.println("\nPlease look at your hand " + p_one.getName());
-			p_one.showPlayerHand(p_one.getPlayerHand(p_one));
-			System.out.println("\nPlease choose card number 1 to place down: \n");
-			Scanner putDownResp = new Scanner(System.in); 
-			System.out.println("Please enter a number [0-6]: ");
-			int faceupCard = putDownResp.nextInt();
-			gameFunc.placeDownCards(p_one, faceupCard, 2);
-		}
-		else {
-			System.out.println("\nPlease look at your hand " + p_two.getName());
-			p_two.showPlayerHand(p_two.getPlayerHand(p_two));
-		}
+		System.out.println("\nPlease look at your hand " + p_one.getName());
+		p_one.showPlayerHand(p_one.getPlayerHand(p_one));
+		System.out.println("\nPlease choose card number 1 to place down: \n");
+		Scanner putDownResp = new Scanner(System.in); 
+		System.out.println("Please enter a number [0-6]: ");
+		int faceupCard = putDownResp.nextInt();
+		gameFunc.placeDownCards(p_one, faceupCard, 2);
+		
+		System.out.println("\nThese are the cards placed on the table by the CPU: \n");
+		p_two.showPlayerHand(p_two.getPlayerTableHand(p_two));
+
 
 
 	}
