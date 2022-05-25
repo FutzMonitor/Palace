@@ -4,7 +4,7 @@ package game;
  * Class that creates cards for a game of Palace
  * @author Christian Gonzalez
  * @date 05/17/2022
- * @last_modified 05/18/2022
+ * @last_modified 05/25/2022
  */
 public class cards {
 

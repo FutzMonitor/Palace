@@ -4,7 +4,7 @@ package game;
  * Class that creates a player for the game Palace
  * @author Christian Gonzalez
  * @date 05/18/2022
- * @last_modified 05/18/2022
+ * @last_modified 05/25/2022
  */
 public class player {
 
@@ -52,7 +52,7 @@ public class player {
 	 * Return the turn id of the player.
 	 * @return - the turn id of the player
 	 */
-	public int getTurnid() {
+	public int getTurnId() {
 		return turnId;
 	}
 

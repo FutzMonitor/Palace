@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Keeps the game.java class relatively clean and organized.
  * @author Christian Gonzalez
  * @date 05/19/2022
- * @last_modified 05/19/2022
+ * @last_modified 05/25/2022
  */
 public class gameFunc {
 
@@ -107,9 +107,26 @@ public class gameFunc {
 			int faceupCard = putDownResp.nextInt();
 			gameFunc.placeDownCards(thisPlayer, faceupCard, limit + 1);
 		}
-		
-
 	}
 
+	/**
+	 * 
+	 * @param one - player one's lowest value card
+	 * @param two
+	 */
+	public static void determineStartingTurn(player one, player two) {
+		int playerOne = one.getPlayerHand(one).getLowestRank(one.getPlayerHand(one));
+		int playerTwo = two.getPlayerHand(two).getLowestRank(two.getPlayerHand(two));
+		if(playerOne > playerTwo) {
+			game.setTurnCounter(one.getTurnId());
+		}
+		else if(playerOne < playerTwo){
+			game.setTurnCounter(two.getTurnId());
+		}
+		else {
+			int haha = (Math.random() <= 0.5) ? 0 : 1;
+			game.setTurnCounter(haha    );
+		}
+	}
 
 }

@@ -6,22 +6,28 @@ import java.util.Scanner;
  * The main game component of Palace
  * @author Christian Gonzalez
  * @date 05/18/2022
- * @last_modified 05/2020/2022
+ * @last_modified 05/25/2022
  */
 public class game {
 
 	// Keeps track of which player makes their turn.
 	private static int turnCounter;
+	private static boolean noWinner = true;
 
-	/*
-	 * Generate a random turnCounter to dictate who goes first.
+	/**
+	 * Get the turn counter.
+	 * @return - the turn counter.
 	 */
-	public static void generateBeginning() {
-		turnCounter = (Math.random() <= 0.5) ? 0 : 1;
-	}
-
 	public static int getTurnCounter() {
 		return turnCounter;
+	}
+	
+	/**
+	 * Sets a new turn counter for the game.
+	 * @param newCounter - the new number value for the counter.
+	 */
+	public static void setTurnCounter(int newCounter) {
+		turnCounter = newCounter;
 	}
 
 	public static void startGame() {
@@ -68,7 +74,15 @@ public class game {
 		
 		System.out.println("\nThese are the cards placed on the table by the CPU: \n");
 		p_two.showPlayerHand(p_two.getPlayerTableHand(p_two));
+		
+		System.out.println("\nThese are the cards in the CPU's hand: \n");
+		p_two.showPlayerHand(p_two.getPlayerHand(p_two));
 
+		gameFunc.determineStartingTurn(p_one, p_two);
+		System.out.println("The player with this turn id: " + getTurnCounter() + " is going first.");
+		while(noWinner) {
+			
+		}
 
 
 	}

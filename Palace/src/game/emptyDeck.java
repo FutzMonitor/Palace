@@ -8,7 +8,7 @@ import java.util.List;
  * Class that creates an empty deck of cards for the game Palace.
  * @author Christian Gonzalez
  * @date 05/18/2022
- * @last_modified 05/19/2022
+ * @last_modified 05/25/2022
  */
 public class emptyDeck {
 
@@ -60,7 +60,7 @@ public class emptyDeck {
 		toThisDeck.addCard(toThisDeck, targetCard);
 
 	}
-	
+
 	/**
 	 * Moves a specified card from one deck to another
 	 * @param fromThisDeck - removes a card from this specified deck
@@ -102,7 +102,36 @@ public class emptyDeck {
 	public List<cards> getDeckArrayList(emptyDeck fromThisDeck){
 		return deckOfCards;
 	}
-	
+
+	/**
+	 * Return the lowest rank in the deck.
+	 * @param thisDeck - look for the lowest rank in this specified deck.
+	 * @return - returns the lowest ranked card.
+	 */
+	public int getLowestRank(emptyDeck thisDeck) {
+		// Make sure we have a valid card to compare to the rest of the deck.
+		cards verifyValid = thisDeck.getCard(thisDeck, 0);
+		for(int k = 1; k < thisDeck.deckSize(thisDeck); k++) {
+			if(verifyValid.getSpecial() == Specials.None) {
+				break;
+			}
+			else {
+				verifyValid = thisDeck.getCard(thisDeck, k);
+			}
+
+		}		
+
+		// Now compare it to the rest of the deck.
+		for(int i = 1; i < this.deckSize(thisDeck); i++) {
+			cards compareTo = thisDeck.getCard(thisDeck, i);
+			if(verifyValid.getRank().getRankVal() < compareTo.getRank().getRankVal() && compareTo.getSpecial() == Specials.None) {
+				verifyValid = thisDeck.getCard(thisDeck, i);
+			}
+		}
+		int val = verifyValid.getRank().getRankVal();
+		return val;
+	}
+
 	/**
 	 * Prints the cards inside the deck.
 	 * @param fromThisDeck - specified deck from which to read from.

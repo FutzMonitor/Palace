@@ -6,7 +6,7 @@ import java.util.Random;
  * Temporary class to test quick snippets of code.
  * @author Christian Gonzalez
  * @date 05/23/2022
- * @last_modified 05/23/2022
+ * @last_modified 05/25/2022
  */
 public class testing {
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * This class is a sub-class of emptyDeck.java
  * @author Christian Gonzalez
  * @date 05/18/2022
- * @last_modified 05/20/2022
+ * @last_modified 05/25/2022
  */
 public class deck extends emptyDeck{
 
