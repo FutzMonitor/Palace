@@ -104,7 +104,7 @@ public class emptyDeck {
 	}
 
 	/**
-	 * Return the lowest rank in the deck.
+	 * Return the lowest rank int in the deck.
 	 * @param thisDeck - look for the lowest rank in this specified deck.
 	 * @return - returns the lowest ranked card.
 	 */
@@ -124,12 +124,40 @@ public class emptyDeck {
 		// Now compare it to the rest of the deck.
 		for(int i = 1; i < this.deckSize(thisDeck); i++) {
 			cards compareTo = thisDeck.getCard(thisDeck, i);
-			if(verifyValid.getRank().getRankVal() < compareTo.getRank().getRankVal() && compareTo.getSpecial() == Specials.None) {
+			if(verifyValid.getRank().getRankVal() > compareTo.getRank().getRankVal() && compareTo.getSpecial() == Specials.None) {
 				verifyValid = thisDeck.getCard(thisDeck, i);
 			}
 		}
 		int val = verifyValid.getRank().getRankVal();
 		return val;
+	}
+
+	/**
+	 * Return the lowest ranked card object.
+	 * @param thisDeck - from this specified deck.
+	 * @return - the card object with the lowest rank.
+	 */
+	public cards getLowestRankCard(emptyDeck thisDeck) {
+		// Make sure we have a valid card to compare to the rest of the deck.
+		cards verifyValid = thisDeck.getCard(thisDeck, 0);
+		for(int k = 1; k < thisDeck.deckSize(thisDeck); k++) {
+			if(verifyValid.getSpecial() == Specials.None) {
+				break;
+			}
+			else {
+				verifyValid = thisDeck.getCard(thisDeck, k);
+			}
+
+		}		
+
+		// Now compare it to the rest of the deck.
+		for(int i = 1; i < this.deckSize(thisDeck); i++) {
+			cards compareTo = thisDeck.getCard(thisDeck, i);
+			if(verifyValid.getRank().getRankVal() > compareTo.getRank().getRankVal() && compareTo.getSpecial() == Specials.None) {
+				verifyValid = thisDeck.getCard(thisDeck, i);
+			}
+		}
+		return verifyValid;
 	}
 
 	/**

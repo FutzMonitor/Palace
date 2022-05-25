@@ -110,23 +110,38 @@ public class gameFunc {
 	}
 
 	/**
-	 * 
-	 * @param one - player one's lowest value card
-	 * @param two
+	 * Determine which players goes first depending on the lowest non-special card in their hand.
+	 * @param one - player one's lowest value card.
+	 * @param two - player two's lowest value card.
 	 */
 	public static void determineStartingTurn(player one, player two) {
 		int playerOne = one.getPlayerHand(one).getLowestRank(one.getPlayerHand(one));
 		int playerTwo = two.getPlayerHand(two).getLowestRank(two.getPlayerHand(two));
-		if(playerOne > playerTwo) {
+		// player one goes first.
+		if(playerOne < playerTwo) {
+			card firstCard = one.get
 			game.setTurnCounter(one.getTurnId());
 		}
-		else if(playerOne < playerTwo){
+		// player two goes first.
+		else if(playerOne > playerTwo){
 			game.setTurnCounter(two.getTurnId());
 		}
+		// if they have the same lowest value, then randomly choose who goes first.
 		else {
 			int haha = (Math.random() <= 0.5) ? 0 : 1;
-			game.setTurnCounter(haha    );
+			game.setTurnCounter(haha);
 		}
 	}
 
+	//	public int checkCurrentVal(emptyDeck thisDeck) {
+	//
+	//		return 0;
+	//	}
+
+	public void placeOnMainPile(player thisPlayer, emptyDeck mainPile) {
+		if(mainPile.deckSize(mainPile) == 0) {
+			System.out.println("\nPlease choose which card you'd like to place down ");
+		}
+		int beatThisVal = mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1).getRank().getRankVal();
+	}
 }

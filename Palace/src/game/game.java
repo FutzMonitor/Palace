@@ -80,8 +80,15 @@ public class game {
 
 		gameFunc.determineStartingTurn(p_one, p_two);
 		System.out.println("The player with this turn id: " + getTurnCounter() + " is going first.");
+		
+		// The main game: placing down cards until there's a winner.
 		while(noWinner) {
-			
+			if(getTurnCounter() == 0) {
+				
+			}
+			else {
+				
+			}
 		}
 
 
