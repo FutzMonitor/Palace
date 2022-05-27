@@ -159,6 +159,24 @@ public class emptyDeck {
 		}
 		return verifyValid;
 	}
+	
+	/**
+	 * Finds the exact location of a card inside of a deck.
+	 * @param thisDeck - look inside of this deck.
+	 * @param target - find the index of this card.
+	 * @return - the index of this card inside of the deck.
+	 */
+	public int findCardLocation(emptyDeck thisDeck, cards target) {
+		cards findLocation = target;
+		int location = -1;
+		for(int i = 0; i < thisDeck.deckSize(thisDeck); i++) {
+			if(thisDeck.getCard(thisDeck, i) == findLocation) {
+				location = i;
+				break;
+			}
+		}
+		return location;
+	}
 
 	/**
 	 * Prints the cards inside the deck.

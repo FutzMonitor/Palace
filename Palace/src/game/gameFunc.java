@@ -95,7 +95,7 @@ public class gameFunc {
 	public static void placeDownCards(player thisPlayer, int cardLocation, int limit){
 		thisPlayer.getPlayerHand(thisPlayer).moveCardWithLocation(thisPlayer.getPlayerHand(thisPlayer), thisPlayer.getPlayerTableHand(thisPlayer), cardLocation);
 
-		System.out.println("These are the your cards on the table " + thisPlayer.getName());
+		System.out.println("These are your cards on the table " + thisPlayer.getName());
 		thisPlayer.showPlayerHand(thisPlayer.getPlayerTableHand(thisPlayer));
 		System.out.println("\nThese are the cards in your hand " + thisPlayer.getName());
 		thisPlayer.showPlayerHand(thisPlayer.getPlayerHand(thisPlayer));
@@ -119,17 +119,26 @@ public class gameFunc {
 		int playerTwo = two.getPlayerHand(two).getLowestRank(two.getPlayerHand(two));
 		// player one goes first.
 		if(playerOne < playerTwo) {
-			card firstCard = one.get
+			one.getPlayerHand(one).moveCardWithLocation(one.getPlayerHand(one), game.getMainPile(), one.getPlayerHand(one).findCardLocation(one.getPlayerHand(one), one.getPlayerHand(one).getLowestRankCard(one.getPlayerHand(one))));
 			game.setTurnCounter(one.getTurnId());
 		}
 		// player two goes first.
 		else if(playerOne > playerTwo){
+			two.getPlayerHand(two).moveCardWithLocation(two.getPlayerHand(two), game.getMainPile(), two.getPlayerHand(two).findCardLocation(two.getPlayerHand(two), two.getPlayerHand(two).getLowestRankCard(two.getPlayerHand(two))));
 			game.setTurnCounter(two.getTurnId());
 		}
 		// if they have the same lowest value, then randomly choose who goes first.
 		else {
 			int haha = (Math.random() <= 0.5) ? 0 : 1;
-			game.setTurnCounter(haha);
+			if(haha == 0) {
+				one.getPlayerHand(one).moveCardWithLocation(one.getPlayerHand(one), game.getMainPile(), one.getPlayerHand(one).findCardLocation(one.getPlayerHand(one), one.getPlayerHand(one).getLowestRankCard(one.getPlayerHand(one))));
+				game.setTurnCounter(haha);
+			}
+			else {
+				two.getPlayerHand(two).moveCardWithLocation(two.getPlayerHand(two), game.getMainPile(), two.getPlayerHand(two).findCardLocation(two.getPlayerHand(two), two.getPlayerHand(two).getLowestRankCard(two.getPlayerHand(two))));
+				game.setTurnCounter(haha);
+			}
+			
 		}
 	}
 

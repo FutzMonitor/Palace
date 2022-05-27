@@ -1,7 +1,7 @@
 package game;
 // Different card ranks along with their numeric values
 public enum Ranks {
-	Ace(1),
+	Ace(14),
 	Two(2), 
 	Three(3),
 	Four(4), 

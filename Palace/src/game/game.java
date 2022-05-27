@@ -13,6 +13,7 @@ public class game {
 	// Keeps track of which player makes their turn.
 	private static int turnCounter;
 	private static boolean noWinner = true;
+	private static emptyDeck mainPile;
 
 	/**
 	 * Get the turn counter.
@@ -21,7 +22,11 @@ public class game {
 	public static int getTurnCounter() {
 		return turnCounter;
 	}
-	
+
+	public static emptyDeck getMainPile() {
+		return mainPile;
+	}
+
 	/**
 	 * Sets a new turn counter for the game.
 	 * @param newCounter - the new number value for the counter.
@@ -38,7 +43,7 @@ public class game {
 		// Create the main pile which is where the game takes place.
 		// Create the main deck where the cards are dealt and drawn from.
 		// Shuffle the mainDeck before the game starts
-		emptyDeck mainPile = new emptyDeck();
+		mainPile = new emptyDeck();
 		emptyDeck discrdedPile = new emptyDeck();
 		deck mainDeck = new deck();
 		mainDeck.shuffleDeck(mainDeck);
@@ -71,23 +76,37 @@ public class game {
 		System.out.println("Please enter a number [0-6]: ");
 		int faceupCard = putDownResp.nextInt();
 		gameFunc.placeDownCards(p_one, faceupCard, 2);
-		
+
 		System.out.println("\nThese are the cards placed on the table by the CPU: \n");
 		p_two.showPlayerHand(p_two.getPlayerTableHand(p_two));
-		
+
 		System.out.println("\nThese are the cards in the CPU's hand: \n");
 		p_two.showPlayerHand(p_two.getPlayerHand(p_two));
 
 		gameFunc.determineStartingTurn(p_one, p_two);
-		System.out.println("The player with this turn id: " + getTurnCounter() + " is going first.");
-		
+		if(getTurnCounter() == 0) {
+			System.out.println("\nYou'll be the one to start " + p_one.getName() + "\n");
+		}
+		else {
+			System.out.println("\nYou'll be the one to start " + p_two.getName() + "\n");
+		}
+
+
 		// The main game: placing down cards until there's a winner.
 		while(noWinner) {
 			if(getTurnCounter() == 0) {
-				
+				if(p_one.getPlayerHand(p_one).deckSize(p_one.getPlayerHand(p_one)) != 4) {
+					p_one.getPlayerHand(p_one).moveCard(mainDeck, p_one.getPlayerHand(p_one));	
+					System.out.println("\nThese are the cards in your hand: " + p_one.getName() + "\n");
+					p_one.showPlayerHand(p_one.getPlayerTableHand(p_one));
+					System.out.println("\nYou have to beat: " + mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1).toString(mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1)));
+				}
 			}
 			else {
-				
+				if(p_two.getPlayerHand(p_two).deckSize(p_two.getPlayerHand(p_two)) != 4) {
+					p_two.getPlayerHand(p_two).moveCard(mainDeck, p_two.getPlayerHand(p_two));
+					System.out.println("\nYou have to beat: " + mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1).toString(mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1)));
+				}
 			}
 		}
 
