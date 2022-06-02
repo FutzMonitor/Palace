@@ -6,7 +6,7 @@ import java.util.Scanner;
  * The main game component of Palace
  * @author Christian Gonzalez
  * @date 05/18/2022
- * @last_modified 05/25/2022
+ * @last_modified 06/01/2022
  */
 public class game {
 
@@ -95,16 +95,34 @@ public class game {
 		// The main game: placing down cards until there's a winner.
 		while(noWinner) {
 			if(getTurnCounter() == 0) {
-				if(p_one.getPlayerHand(p_one).deckSize(p_one.getPlayerHand(p_one)) != 4) {
+				if(p_one.getPlayerHand(p_one).deckSize(p_one.getPlayerHand(p_one)) < 4) {
 					p_one.getPlayerHand(p_one).moveCard(mainDeck, p_one.getPlayerHand(p_one));	
+					System.out.println("\nThese are the cards in your hand: " + p_one.getName() + "\n");
+					p_one.showPlayerHand(p_one.getPlayerTableHand(p_one));
+					System.out.println("\nYou have to beat: " + mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1).toString(mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1)));
+				}
+				else if(p_one.getPlayerHand(p_one).deckSize(p_one.getPlayerHand(p_one)) >= 4) {
+					p_one.showPlayerHand(p_one.getPlayerTableHand(p_one));
+					System.out.println("\nYou have to beat: " + mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1).toString(mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1)));
+				}
+				else {
 					System.out.println("\nThese are the cards in your hand: " + p_one.getName() + "\n");
 					p_one.showPlayerHand(p_one.getPlayerTableHand(p_one));
 					System.out.println("\nYou have to beat: " + mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1).toString(mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1)));
 				}
 			}
 			else {
-				if(p_two.getPlayerHand(p_two).deckSize(p_two.getPlayerHand(p_two)) != 4) {
+				if(p_two.getPlayerHand(p_two).deckSize(p_two.getPlayerHand(p_two)) < 4) {
 					p_two.getPlayerHand(p_two).moveCard(mainDeck, p_two.getPlayerHand(p_two));
+					p_two.showPlayerHand(p_two.getPlayerTableHand(p_two));
+					System.out.println("\nYou have to beat: " + mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1).toString(mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1)));
+				}
+				else if(p_two.getPlayerHand(p_two).deckSize(p_two.getPlayerHand(p_two)) >= 4) {
+					p_two.showPlayerHand(p_two.getPlayerTableHand(p_two));
+					System.out.println("\nYou have to beat: " + mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1).toString(mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1)));
+				}
+				else {
+					p_two.showPlayerHand(p_two.getPlayerTableHand(p_two));
 					System.out.println("\nYou have to beat: " + mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1).toString(mainPile.getCard(mainPile, mainPile.deckSize(mainPile) - 1)));
 				}
 			}
