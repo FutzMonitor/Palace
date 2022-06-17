@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @date 05/18/2022
  * @last_modified 05/25/2022
  */
-public class deck extends emptyDeck{
+public class FullDeck extends Deck{
 
 	// Currently using ArrayList found in emptyDeck class
 	//private List<cards> deckOfCards;
@@ -18,29 +18,29 @@ public class deck extends emptyDeck{
 	/**
 	 * Constructs a deck (ArrayList of cards) of 52 cards.
 	 */
-	public deck() {
-		deckOfCards = new ArrayList<cards>();
+	public FullDeck() {
+		deckOfCards = new ArrayList<Card>();
 
 		for (Suites s : Suites.values()) {
 			for (Ranks r : Ranks.values()) {
 				if(r.getRankVal() == 2) {
-					cards c = new cards(r, s, Specials.Bomb);
+					Card c = new Card(r, s, Specials.Bomb);
 					deckOfCards.add(c);
 				}
 				else if(r.getRankVal() == 4) {
-					cards c = new cards(r, s, Specials.Window);
+					Card c = new Card(r, s, Specials.Window);
 					deckOfCards.add(c);
 				}
 				else if(r.getRankVal() == 7) {
-					cards c = new cards(r, s, Specials.Humility);
+					Card c = new Card(r, s, Specials.Humility);
 					deckOfCards.add(c);
 				}
 				else if(r.getRankVal() == 10) {
-					cards c = new cards(r, s, Specials.Reset);
+					Card c = new Card(r, s, Specials.Reset);
 					deckOfCards.add(c);
 				}
 				else {
-					cards c = new cards(r, s, Specials.None);
+					Card c = new Card(r, s, Specials.None);
 					deckOfCards.add(c);
 				}
 			}
@@ -50,7 +50,7 @@ public class deck extends emptyDeck{
 	public static void main(String[] args) {
 
 		// First test to make sure that a full deck of 52 correct cards are populating the ArrayList that is the deck.
-		deck testDeck = new deck();
+		FullDeck testDeck = new FullDeck();
 		System.out.println("The size of this deck of cards is: " + testDeck.deckSize(testDeck));
 		testDeck.showHand(testDeck);
 

@@ -10,12 +10,12 @@ import java.util.List;
  * @date 05/18/2022
  * @last_modified 05/25/2022
  */
-public class emptyDeck {
+public class Deck {
 
-	protected List<cards> deckOfCards;
+	protected List<Card> deckOfCards;
 
-	public emptyDeck() {
-		deckOfCards = new ArrayList<cards>();
+	public Deck() {
+		deckOfCards = new ArrayList<Card>();
 	}
 
 	/**
@@ -24,7 +24,7 @@ public class emptyDeck {
 	 * @param i - grab the card from this index.
 	 * @return - a card from a specific deck from that index.
 	 */
-	public cards getCard(emptyDeck fromThisDeck, int i) {
+	public Card getCard(Deck fromThisDeck, int i) {
 		return fromThisDeck.deckOfCards.get(i);
 	}
 
@@ -33,7 +33,7 @@ public class emptyDeck {
 	 * @param fromThisDeck - remove a card from this specified deck.
 	 * @param i - remove a card from this specified location in the deck
 	 */
-	public void removeCard(emptyDeck fromThisDeck, int i) {
+	public void removeCard(Deck fromThisDeck, int i) {
 		fromThisDeck.deckOfCards.remove(i);		
 	}
 
@@ -42,7 +42,7 @@ public class emptyDeck {
 	 * @param fromThisDeck - add a card to the deck
 	 * @param thisCard - add this card object to the deck
 	 */
-	public void addCard(emptyDeck toThisDeck, cards thisCard) {
+	public void addCard(Deck toThisDeck, Card thisCard) {
 		toThisDeck.deckOfCards.add(thisCard);
 	}
 
@@ -51,11 +51,11 @@ public class emptyDeck {
 	 * @param fromThisDeck - removes a card from this specified deck
 	 * @param toThisDeck - adds a card fromThisDeck to this specified deck
 	 */
-	public void moveCard(emptyDeck fromThisDeck, emptyDeck toThisDeck) {
+	public void moveCard(Deck fromThisDeck, Deck toThisDeck) {
 		// Debugging code: verifies indices are correct.
 		//		System.out.println("The size of fromThisDeck cards is: " + fromThisDeck.deckSize(fromThisDeck) +
 		//				"\nThe size of toThisDeck: " + toThisDeck.deckSize(toThisDeck));
-		cards targetCard = fromThisDeck.getCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
+		Card targetCard = fromThisDeck.getCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
 		fromThisDeck.removeCard(fromThisDeck, fromThisDeck.deckSize(fromThisDeck) - 1);
 		toThisDeck.addCard(toThisDeck, targetCard);
 
@@ -67,11 +67,11 @@ public class emptyDeck {
 	 * @param toThisDeck - adds a card fromThisDeck to this specified deck
 	 * @param location - of the card to be moved from one deck to another
 	 */
-	public void moveCardWithLocation(emptyDeck fromThisDeck, emptyDeck toThisDeck, int location) {
+	public void moveCardWithLocation(Deck fromThisDeck, Deck toThisDeck, int location) {
 		// Debugging code: verifies indices are correct.
 		//		System.out.println("The size of fromThisDeck cards is: " + fromThisDeck.deckSize(fromThisDeck) +
 		//				"\nThe size of toThisDeck: " + toThisDeck.deckSize(toThisDeck));
-		cards targetCard = fromThisDeck.getCard(fromThisDeck, location);
+		Card targetCard = fromThisDeck.getCard(fromThisDeck, location);
 		fromThisDeck.removeCard(fromThisDeck, location);
 		toThisDeck.addCard(toThisDeck, targetCard);
 
@@ -81,7 +81,7 @@ public class emptyDeck {
 	 * Shuffles a deck of cards.
 	 * @param fromThisDeck - Shuffle the elements inside this specified deck.
 	 */
-	public void shuffleDeck(emptyDeck fromThisDeck) {
+	public void shuffleDeck(Deck fromThisDeck) {
 		Collections.shuffle(fromThisDeck.getDeckArrayList(fromThisDeck));
 	}
 
@@ -90,7 +90,7 @@ public class emptyDeck {
 	 * @param fromThisDeck - a specified deck.
 	 * @return - the size of that deck.
 	 */
-	public int deckSize(emptyDeck fromThisDeck) {
+	public int deckSize(Deck fromThisDeck) {
 		return fromThisDeck.deckOfCards.size();
 	}
 
@@ -99,7 +99,7 @@ public class emptyDeck {
 	 * @param fromThisDeck - return the List of this specified deck object.
 	 * @return - returns a List of a deck.
 	 */
-	public List<cards> getDeckArrayList(emptyDeck fromThisDeck){
+	public List<Card> getDeckArrayList(Deck fromThisDeck){
 		return deckOfCards;
 	}
 
@@ -108,9 +108,9 @@ public class emptyDeck {
 	 * @param thisDeck - look for the lowest rank in this specified deck.
 	 * @return - returns the lowest ranked card.
 	 */
-	public int getLowestRank(emptyDeck thisDeck) {
+	public int getLowestRank(Deck thisDeck) {
 		// Make sure we have a valid card to compare to the rest of the deck.
-		cards verifyValid = thisDeck.getCard(thisDeck, 0);
+		Card verifyValid = thisDeck.getCard(thisDeck, 0);
 		for(int k = 1; k < thisDeck.deckSize(thisDeck); k++) {
 			if(verifyValid.getSpecial() == Specials.None) {
 				break;
@@ -123,7 +123,7 @@ public class emptyDeck {
 
 		// Now compare it to the rest of the deck.
 		for(int i = 1; i < this.deckSize(thisDeck); i++) {
-			cards compareTo = thisDeck.getCard(thisDeck, i);
+			Card compareTo = thisDeck.getCard(thisDeck, i);
 			if(verifyValid.getRank().getRankVal() > compareTo.getRank().getRankVal() && compareTo.getSpecial() == Specials.None) {
 				verifyValid = thisDeck.getCard(thisDeck, i);
 			}
@@ -137,9 +137,9 @@ public class emptyDeck {
 	 * @param thisDeck - from this specified deck.
 	 * @return - the card object with the lowest rank.
 	 */
-	public cards getLowestRankCard(emptyDeck thisDeck) {
+	public Card getLowestRankCard(Deck thisDeck) {
 		// Make sure we have a valid card to compare to the rest of the deck.
-		cards verifyValid = thisDeck.getCard(thisDeck, 0);
+		Card verifyValid = thisDeck.getCard(thisDeck, 0);
 		for(int k = 1; k < thisDeck.deckSize(thisDeck); k++) {
 			if(verifyValid.getSpecial() == Specials.None) {
 				break;
@@ -152,7 +152,7 @@ public class emptyDeck {
 
 		// Now compare it to the rest of the deck.
 		for(int i = 1; i < this.deckSize(thisDeck); i++) {
-			cards compareTo = thisDeck.getCard(thisDeck, i);
+			Card compareTo = thisDeck.getCard(thisDeck, i);
 			if(verifyValid.getRank().getRankVal() > compareTo.getRank().getRankVal() && compareTo.getSpecial() == Specials.None) {
 				verifyValid = thisDeck.getCard(thisDeck, i);
 			}
@@ -166,8 +166,8 @@ public class emptyDeck {
 	 * @param target - find the index of this card.
 	 * @return - the index of this card inside of the deck.
 	 */
-	public int findCardLocation(emptyDeck thisDeck, cards target) {
-		cards findLocation = target;
+	public int findCardLocation(Deck thisDeck, Card target) {
+		Card findLocation = target;
 		int location = -1;
 		for(int i = 0; i < thisDeck.deckSize(thisDeck); i++) {
 			if(thisDeck.getCard(thisDeck, i) == findLocation) {
@@ -182,26 +182,26 @@ public class emptyDeck {
 	 * Prints the cards inside the deck.
 	 * @param fromThisDeck - specified deck from which to read from.
 	 */
-	public void showHand(emptyDeck fromThisDeck) {
+	public void showHand(Deck fromThisDeck) {
 		for(int i = 0; i < fromThisDeck.deckSize(fromThisDeck); i++) {
-			cards fetchedCard = fromThisDeck.getCard(fromThisDeck, i);
+			Card fetchedCard = fromThisDeck.getCard(fromThisDeck, i);
 			System.out.println(i + ": " + fetchedCard.toString(fetchedCard));
 		}
 	}
 
 	public static void main(String[] args) {
-		emptyDeck testEmptyDeck = new emptyDeck();
+		Deck testEmptyDeck = new Deck();
 
 		// First test to make sure the deck is empty
 		if (testEmptyDeck.deckSize(testEmptyDeck) == 0) {
 			System.out.println("This deck is empty");
 		}
 		else {
-			cards fetchedCard = testEmptyDeck.getCard(testEmptyDeck, 0);
+			Card fetchedCard = testEmptyDeck.getCard(testEmptyDeck, 0);
 			System.out.println("0: " + fetchedCard.toString(fetchedCard));
 		}
 
-		deck testDeck = new deck();
+		FullDeck testDeck = new FullDeck();
 
 		testEmptyDeck.moveCard(testDeck, testEmptyDeck);
 
@@ -210,7 +210,7 @@ public class emptyDeck {
 			System.out.println("This deck is empty");
 		}
 		else {
-			cards fetchedCard = testEmptyDeck.getCard(testEmptyDeck, 0);
+			Card fetchedCard = testEmptyDeck.getCard(testEmptyDeck, 0);
 			System.out.println("0: " + fetchedCard.toString(fetchedCard));
 		}
 	}

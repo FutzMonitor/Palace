@@ -9,7 +9,7 @@ package game;
 public class logic {
 
 	// Indices? 
-	public boolean numLogic(emptyDeck thisCard, emptyDeck needsToBeat, int index) {
+	public boolean numLogic(Deck thisCard, Deck needsToBeat, int index) {
 		int cardOneVal = thisCard.getCard(thisCard, index).getRank().getRankVal();
 		int cardTwoVal = needsToBeat.getCard(needsToBeat, 0).getRank().getRankVal();
 

@@ -13,7 +13,7 @@ public class game {
 	// Keeps track of which player makes their turn.
 	private static int turnCounter;
 	private static boolean noWinner = true;
-	private static emptyDeck mainPile;
+	private static Deck mainPile;
 
 	/**
 	 * Get the turn counter.
@@ -23,7 +23,7 @@ public class game {
 		return turnCounter;
 	}
 
-	public static emptyDeck getMainPile() {
+	public static Deck getMainPile() {
 		return mainPile;
 	}
 
@@ -37,15 +37,15 @@ public class game {
 
 	public static void startGame() {
 		// Create two players. For now we'll have myself and a CPU. 
-		player p_one = new player("Chris", 0);
-		cpu p_two = new cpu("CPU", 1);
+		Player p_one = new Player("Chris", 0);
+		CPU p_two = new CPU("CPU", 1);
 
 		// Create the main pile which is where the game takes place.
 		// Create the main deck where the cards are dealt and drawn from.
 		// Shuffle the mainDeck before the game starts
-		mainPile = new emptyDeck();
-		emptyDeck discrdedPile = new emptyDeck();
-		deck mainDeck = new deck();
+		mainPile = new Deck();
+		Deck discrdedPile = new Deck();
+		FullDeck mainDeck = new FullDeck();
 		mainDeck.shuffleDeck(mainDeck);
 
 		// Make sure the main deck was populated with 52 cards. 

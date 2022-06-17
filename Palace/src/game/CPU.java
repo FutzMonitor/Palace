@@ -9,19 +9,19 @@ import java.util.Random;
  * @date 05/20/2022
  * @last_modified 05/25/2022
  */
-public class cpu extends player {
+public class CPU extends Player {
 
 	/**
 	 * Constructs a new CPU object.
 	 * @param initName - name of this CPU.
 	 * @param initTurnId - the turn ID for this CPU opponent.
 	 */
-	public cpu(String initName, int initTurnId) {
+	public CPU(String initName, int initTurnId) {
 		super(initName, initTurnId);
 	}
 
 
-	public void placeTableCards(player thisPlayer, emptyDeck fromThisDeck) {
+	public void placeTableCards(Player thisPlayer, Deck fromThisDeck) {
 		int min = 0;
 		int max = 6;
 		for(int i = 1; i < 4; i++) {

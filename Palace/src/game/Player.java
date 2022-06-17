@@ -6,22 +6,22 @@ package game;
  * @date 05/18/2022
  * @last_modified 05/25/2022
  */
-public class player {
+public class Player {
 
 	private String pName;
 	private int turnId;
-	private emptyDeck hand;
-	private emptyDeck tableHand;
+	private Deck hand;
+	private Deck tableHand;
 
 
 	/**
 	 * Constructs two empty decks for the player.
 	 */
-	public player(String initPName, int initTurnid) {
+	public Player(String initPName, int initTurnid) {
 		pName = initPName;
 		turnId = initTurnid;
-		hand = new emptyDeck();
-		tableHand = new emptyDeck();
+		hand = new Deck();
+		tableHand = new Deck();
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class player {
 	 * @param thisPlayer - specifies the player we want to look at.
 	 * @return - return a specified player's hand.
 	 */
-	public emptyDeck getPlayerHand(player thisPlayer) {
+	public Deck getPlayerHand(Player thisPlayer) {
 		return hand;
 	}
 
@@ -70,7 +70,7 @@ public class player {
 	 * @param thisPlayer - specifies the player we want to look at.
 	 * @return - return a specified player's table hand.
 	 */
-	public emptyDeck getPlayerTableHand(player thisPlayer) {
+	public Deck getPlayerTableHand(Player thisPlayer) {
 		return tableHand;
 	}
 
@@ -79,7 +79,7 @@ public class player {
 	 * @param thisDeck - specified deck, grab its size.
 	 * @return - the size of the specified deck.
 	 */
-	public int getPSize(emptyDeck thisDeck) {
+	public int getPSize(Deck thisDeck) {
 		return thisDeck.deckSize(thisDeck);
 	}
 	
@@ -87,7 +87,7 @@ public class player {
 	 * Show the player's hand by calling the emptyDeck's showHand() function.
 	 * @param fromThisDeck - show cards of this specified deck.
 	 */
-	public void showPlayerHand(emptyDeck fromThisDeck) {
+	public void showPlayerHand(Deck fromThisDeck) {
 		fromThisDeck.showHand(fromThisDeck);
 	}
 }

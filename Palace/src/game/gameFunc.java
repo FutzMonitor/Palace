@@ -21,7 +21,7 @@ public class gameFunc {
 	 * @param two - the second player
 	 * @param fromThisDeck - cards are dealt from this specified deck.
 	 */
-	public static void dealCards(player one, player two, emptyDeck fromThisDeck) {
+	public static void dealCards(Player one, Player two, Deck fromThisDeck) {
 		// Give each player their "tableHand".
 		// Mark three of those cards as "invisible".
 
@@ -92,7 +92,7 @@ public class gameFunc {
 	 * @param thisPlayer - specifies the player.
 	 * @param cardLocation - specifies which card is being moved.
 	 */
-	public static void placeDownCards(player thisPlayer, int cardLocation, int limit){
+	public static void placeDownCards(Player thisPlayer, int cardLocation, int limit){
 		thisPlayer.getPlayerHand(thisPlayer).moveCardWithLocation(thisPlayer.getPlayerHand(thisPlayer), thisPlayer.getPlayerTableHand(thisPlayer), cardLocation);
 
 		System.out.println("These are your cards on the table " + thisPlayer.getName());
@@ -114,7 +114,7 @@ public class gameFunc {
 	 * @param one - player one's lowest value card.
 	 * @param two - player two's lowest value card.
 	 */
-	public static void determineStartingTurn(player one, player two) {
+	public static void determineStartingTurn(Player one, Player two) {
 		int playerOne = one.getPlayerHand(one).getLowestRank(one.getPlayerHand(one));
 		int playerTwo = two.getPlayerHand(two).getLowestRank(two.getPlayerHand(two));
 		// player one goes first.
@@ -147,7 +147,7 @@ public class gameFunc {
 	//		return 0;
 	//	}
 
-	public void placeOnMainPile(player thisPlayer, emptyDeck mainPile) {
+	public void placeOnMainPile(Player thisPlayer, Deck mainPile) {
 		if(mainPile.deckSize(mainPile) == 0) {
 			System.out.println("\nPlease choose which card you'd like to place down ");
 		}

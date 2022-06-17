@@ -6,14 +6,14 @@ package game;
  * @date 05/17/2022
  * @last_modified 05/25/2022
  */
-public class cards {
+public class Card {
 
 	private Ranks cardRank;
 	private Suites cardSuite;
 	private Specials cardSpecial;
 	private boolean visibility;
 
-	public cards(Ranks initRank, Suites initSuite, Specials initcardSpecial) {
+	public Card(Ranks initRank, Suites initSuite, Specials initcardSpecial) {
 		cardRank = initRank;
 		cardSuite = initSuite;
 		cardSpecial = initcardSpecial;
@@ -93,7 +93,7 @@ public class cards {
 	 * @param infoCard - The card we want info on.
 	 * @return - Information on that card's Rank, Suite, and Special.
 	 */
-	public String toString(cards infoCard) {
+	public String toString(Card infoCard) {
 		String cardInfo = "Rank: " + infoCard.getRank() + ", Value: " + infoCard.getRank().getRankVal() + ", Suite: " 
 				+ infoCard.getSuite() + ", Special: " + infoCard.getSpecial() + ", Visibility: " + infoCard.getVisibility();
 		return cardInfo;
