@@ -1,3 +1,5 @@
+**Note: This project is on hold. I decided to move to Python.**
+
 <p align="center">
   <img width="460" height="300" src="https://github.com/FutzMonitor/Palace/blob/main/assets/palaceBanner.png">
 </p>
