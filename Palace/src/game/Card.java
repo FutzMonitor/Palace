@@ -43,10 +43,10 @@ public class Card {
 	 * Set a new special to a card.
 	 * @param newSpecial - new special to be assigned.
 	 */
-	public void setSepcial(Specials newSpecial) {
+	public void setSpecial(Specials newSpecial) {
 		cardSpecial = newSpecial;
 	}
-
+ 
 	/**
 	 * Sets visibility status of a card.
 	 */

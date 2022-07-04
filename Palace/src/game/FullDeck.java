@@ -3,17 +3,13 @@ package game;
 import java.util.ArrayList;
 
 /**
- * Class that creates a deck of cards for the game Palace
- * This class is a sub-class of emptyDeck.java
+ * Class that creates a full deck of cards for the game Palace
+ * This class is a sub-class of Deck class
  * @author Christian Gonzalez
  * @date 05/18/2022
- * @last_modified 05/25/2022
+ * @last_modified 07/04/2022
  */
 public class FullDeck extends Deck{
-
-	// Currently using ArrayList found in emptyDeck class
-	//private List<cards> deckOfCards;
-
 
 	/**
 	 * Constructs a deck (ArrayList of cards) of 52 cards.
@@ -45,20 +41,5 @@ public class FullDeck extends Deck{
 				}
 			}
 		}  
-	}
-
-	public static void main(String[] args) {
-
-		// First test to make sure that a full deck of 52 correct cards are populating the ArrayList that is the deck.
-		FullDeck testDeck = new FullDeck();
-		System.out.println("The size of this deck of cards is: " + testDeck.deckSize(testDeck));
-		testDeck.showHand(testDeck);
-
-		// Second test makes sure that the cards are shuffled.
-		System.out.println("\nShuffled cards: \n");
-		testDeck.shuffleDeck(testDeck);
-
-		testDeck.showHand(testDeck);
-
 	}
 }
